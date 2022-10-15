@@ -16,6 +16,8 @@ using log4net.Core;
 using Test.Net.PatternDesign.Strategy;
 using Test.Net.PatternDesign.Builder;
 using Test.Net.PatternDesign.Build;
+using Test.Net.PatternDesign.Singleton;
+using Test.Net.PatternDesign.Prototype;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -58,6 +60,37 @@ namespace Test.Net.App
             builder.BuildHeader();
             builder.BuildClientInformation();
             builder.BuildFooter();
+            #endregion
+
+            #region  Call Singleton
+            Singleton instance1 = Singleton.GetInstance;
+            Singleton instance2 = Singleton.GetInstance;
+
+            if (instance1 == instance2)
+            {
+                Debug.WriteLine("Singleton works, both variables contain the same instance.");
+            }
+            else
+            {
+                Debug.WriteLine("Singleton failed, variables contain different instances.");
+            }
+
+            // validate if user object is null
+            if (instance1.User is null)
+            {
+                instance1.User = new User();
+                instance1.User.Id = 1;
+                instance1.User.Name = "Name";
+                instance1.User.Email = "emai@test.com";
+            }
+
+            //At another point in our application we can apply this validation
+            if (instance1.User is null)
+            { }
+            else
+            {
+                Debug.WriteLine("user object is already set");
+            }
             #endregion
         }
     }
