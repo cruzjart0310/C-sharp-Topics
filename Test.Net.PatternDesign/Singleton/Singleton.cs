@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Test.Net.PatternDesign.Singleton
 {
@@ -24,7 +25,7 @@ namespace Test.Net.PatternDesign.Singleton
         public Singleton()
         {
             counter++;
-            Console.WriteLine("Counter Value " + counter.ToString());
+            Debug.WriteLine("Counter Value " + counter.ToString());
         }
 
         // This is the static method that controls the access to the singleton
