@@ -40,6 +40,25 @@ namespace Test.Net.App
             context.SetStrategy(new DebugLogger());
             context.Save("Context saved via debug console");
             #endregion
+
+            #region  Call Builder
+            var director = new Director();
+            var builder = new ConcreteBuilder();
+            director.Builder = builder;
+
+            Debug.WriteLine("--Basic Ticket--");
+            director.BuildBasicTicket();
+
+            Debug.WriteLine("--Basic Ticket--");
+            director.BuildTicketWithTaxes();
+
+            // Remember, the Builder pattern can be used without a Director
+            // class.
+            Console.WriteLine("Custom product:");
+            builder.BuildHeader();
+            builder.BuildClientInformation();
+            builder.BuildFooter();
+            #endregion
         }
     }
 }
