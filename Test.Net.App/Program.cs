@@ -85,12 +85,13 @@ namespace Test.Net.App
             }
 
             //At another point in our application we can apply this validation
-            if (instance1.User is null)
+            if (Singleton.GetInstance.User is null)
             { }
             else
             {
                 Debug.WriteLine("user object is already set");
             }
+            
             #endregion
         }
     }
