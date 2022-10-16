@@ -11,13 +11,13 @@ using System.Diagnostics;
 using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftWindowsWPF;
 using Test.Net.PatternDesign.FactoryMethod;
 using log4net.Repository.Hierarchy;
-using Test.Net.PatternDesign.Factory_Method;
 using log4net.Core;
 using Test.Net.PatternDesign.Strategy;
 using Test.Net.PatternDesign.Builder;
 using Test.Net.PatternDesign.Build;
 using Test.Net.PatternDesign.Singleton;
 using Test.Net.PatternDesign.Prototype;
+using Test.Net.PatternDesign.Factory;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -87,11 +87,28 @@ namespace Test.Net.App
             //At another point in our application we can apply this validation
             if (Singleton.GetInstance.User is null)
             { }
-            else
+            else  
             {
                 Debug.WriteLine("user object is already set");
             }
-            
+
+            #endregion
+
+            #region Call Factory
+            ICreditCard cardDetails = CreditCardFactory.GetCreditCard(CardType.GOLD);
+
+            if (cardDetails != null)
+            {
+                Console.WriteLine("CardType : " + cardDetails.GetCardType());
+                Console.WriteLine("CreditLimit : " + cardDetails.GetCreditLimit());
+                Console.WriteLine("AnnualCharge :" + cardDetails.GetAnnualCharge());
+            }
+            else
+            {
+                Console.Write("Invalid Card Type");
+            }
+
+            Console.ReadLine();
             #endregion
         }
     }

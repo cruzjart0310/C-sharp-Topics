@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Test.Net.General\Test.Net.General.csproj" />
+    <ProjectReference Include="..\Test.Net.PatternDesign\Test.Net.PatternDesign.csproj" />
     <ProjectReference Include="..\Test.Net.Poo\Test.Net.Poo.csproj" />
     <ProjectReference Include="..\Test.Net.Utilities\Test.Net.Utilities.csproj" />
   </ItemGroup>
